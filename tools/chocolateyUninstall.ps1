@@ -1,6 +1,4 @@
-$packageName = "AstroGrep"
 $uninstallString = ""
-
 
 #Registry path depends on whether we're asking from a 32 bit or 64 bit process - check both
 $uninstallRegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AstroGrep"
@@ -19,5 +17,11 @@ If ($uninstallString -eq "") {
     throw "Uninstall details not found in registry"
 }
 
+$uninstallParams = @{
+    PackageName = 'AstroGrep'
+    FileType = 'exe'
+    SilentArgs = '/S'
+    File = $uninstallString
+}
 
-Uninstall-ChocolateyPackage $packageName 'exe' '/S' $uninstallString
+Uninstall-ChocolateyPackage @uninstallParams
