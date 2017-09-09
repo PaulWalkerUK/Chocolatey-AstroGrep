@@ -1,20 +1,28 @@
-<?xml version="1.0"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <id>AstroGrep</id>
-    <version>4.4.5.0</version>
+    <!-- == PACKAGE SPECIFIC SECTION == -->
+    <id>astrogrep</id>
+    <version>4.4.6</version>
+    <packageSourceUrl>https://github.com/PaulWalkerUK/Chocolatey-AstroGrep</packageSourceUrl>
+    <owners>IanC, P72endragon</owners>
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
     <title>AstroGrep</title>
     <authors>Theodore Ward,Curtis Beard</authors>
-    <owners>IanC</owners>
-    <licenseUrl>http://astrogrep.sourceforge.net/about/</licenseUrl>
     <projectUrl>http://astrogrep.sourceforge.net/</projectUrl>
-    <iconUrl>http://astrogrep.sourceforge.net/pics/AstroGrep_256x256.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/PaulWalkerUK/Chocolatey-AstroGrep/c603335dae051713e6a7def1ee40f3a09f41c90a/AstroGrep_256x256.png</iconUrl>
+    <licenseUrl>https://www.gnu.org/licenses/old-licenses/gpl-2.0-standalone.html</licenseUrl>
+    <projectSourceUrl>https://sourceforge.net/projects/astrogrep</projectSourceUrl>
+    <docsUrl>http://astrogrep.sourceforge.net/features/</docsUrl>
+    <mailingListUrl>https://sourceforge.net/p/astrogrep/discussion/184597/</mailingListUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>AstroGrep is a Microsoft Windows GUI File Searching (grep) utility. Its features include regular expressions, versatile printing options, stores most recent used paths and has a "context" feature which is very nice for looking at source code. It installs to C:\Program Files (x86)\AstroGrep by default.</description>
+    <bugTrackerUrl>https://sourceforge.net/p/astrogrep/_list/tickets</bugTrackerUrl>
+    <tags>astrogrep grep admin</tags>
     <summary>AstroGrep is a Microsoft Windows GUI File Searching (grep) utility.</summary>
-    <tags>AstroGrep grep admin</tags>
+    <description>AstroGrep is a Microsoft Windows GUI File Searching (grep) utility. Its features include regular expressions, versatile printing options, stores most recent used paths and has a "context" feature which is very nice for looking at source code. It installs to C:\Program Files (x86)\AstroGrep by default.</description>
+    <releaseNotes>http://astrogrep.sourceforge.net/news/</releaseNotes>
   </metadata>
   <files>
-      <file src="tools\**" />
+      <file src="tools\**" target="tools" />
   </files>
 </package>
