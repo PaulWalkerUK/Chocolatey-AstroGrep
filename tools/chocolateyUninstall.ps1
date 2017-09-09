@@ -18,7 +18,7 @@ If ($uninstallString -eq "") {
 }
 
 $uninstallParams = @{
-    PackageName = 'AstroGrep'
+    PackageName = 'astrogrep'
     FileType = 'exe'
     SilentArgs = '/S'
     File = $uninstallString
