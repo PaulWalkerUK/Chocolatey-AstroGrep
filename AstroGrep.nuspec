@@ -19,7 +19,17 @@
     <bugTrackerUrl>https://sourceforge.net/p/astrogrep/_list/tickets</bugTrackerUrl>
     <tags>astrogrep grep admin</tags>
     <summary>AstroGrep is a Microsoft Windows GUI File Searching (grep) utility.</summary>
-    <description>AstroGrep is a Microsoft Windows GUI File Searching (grep) utility. Its features include regular expressions, versatile printing options, stores most recent used paths and has a "context" feature which is very nice for looking at source code. It installs to C:\Program Files (x86)\AstroGrep by default.</description>
+    <description>AstroGrep is a Microsoft Windows GUI File Searching (grep) utility. Its features include regular expressions, versatile printing options, stores most recent used paths and has a "context" feature which is very nice for looking at source code. 
+
+# Install Location
+By default, AstroGrep will install to `C:\Program Files (x86)\AstroGrep` (or `C:\Program Files\AstroGrep` if it's a 32-bit version of Windows).
+
+The default install location can be overridden by setting parameters on the command line. For example, to install into to `E:\apps folder\astrogrep`, run:
+
+```
+choco install astrogrep --installargs='/D="E:\apps folder\astrogrep"'
+```
+</description>
     <releaseNotes>http://astrogrep.sourceforge.net/news/</releaseNotes>
   </metadata>
   <files>
