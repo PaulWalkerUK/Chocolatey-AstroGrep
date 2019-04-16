@@ -1,27 +1,26 @@
-$uninstallString = ""
+﻿$ErrorActionPreference = 'Stop';
 
-#Registry path depends on whether we're asking from a 32 bit or 64 bit process - check both
-$uninstallRegPath = "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\AstroGrep"
-$uninstallRegPathWOW6432 = "HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\AstroGrep"
-
-If (Test-Path $uninstallRegPath) {
-    #Would be cleaner to use `Get-ItemPropertyValue`, but that's not available in PS v2
-    $uninstallString = (Get-ItemProperty -Path $uninstallRegPath -Name UninstallString).UninstallString
-}
-ElseIf (Test-Path $uninstallRegPathWOW6432) {
-    $uninstallString = (Get-ItemProperty -Path $uninstallRegPathWOW6432 -Name UninstallString).UninstallString
+$packageArgs = @{
+    packageName   = $env:ChocolateyPackageName
+    softwareName  = 'astrogrep*'
+    fileType      = 'EXE'
+    silentArgs    = '/S'
 }
 
+$uninstalled = $false
+[array]$key = Get-UninstallRegistryKey -SoftwareName $packageArgs['softwareName']
 
-If ($uninstallString -eq "") {
-    throw "Uninstall details not found in registry"
+if ($key.Count -eq 1) {
+  $key | % {
+    $packageArgs['file'] = "$($_.UninstallString)"
+
+    Uninstall-ChocolateyPackage @packageArgs
+  }
+} elseif ($key.Count -eq 0) {
+  Write-Warning "$packageName has already been uninstalled by other means."
+} elseif ($key.Count -gt 1) {
+  Write-Warning "$($key.Count) matches found!"
+  Write-Warning "To prevent accidental data loss, no programs will be uninstalled."
+  Write-Warning "Please alert package maintainer the following keys were matched:"
+  $key | % {Write-Warning "- $($_.DisplayName)"}
 }
-
-$uninstallParams = @{
-    PackageName = 'astrogrep'
-    FileType = 'exe'
-    SilentArgs = '/S'
-    File = $uninstallString
-}
-
-Uninstall-ChocolateyPackage @uninstallParams
